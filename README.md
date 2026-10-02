@@ -14,6 +14,33 @@ The pipeline processes raw data through a medallion-style approach:
    - `dim_aircraft`: Aircraft dimension table with latest seen locations and country origins.
    - `dim_airport`: A dbt seed CSV file simulating global airport locations.
 
+### 📊 dbt Model Lineage
+
+```mermaid
+flowchart TD
+    %% Define styles
+    classDef source fill:#ff9999,stroke:#333,stroke-width:2px;
+    classDef staging fill:#ffcc99,stroke:#333,stroke-width:2px;
+    classDef intermediate fill:#ffff99,stroke:#333,stroke-width:2px;
+    classDef mart fill:#ccffcc,stroke:#333,stroke-width:2px;
+    classDef seed fill:#ccccff,stroke:#333,stroke-width:2px;
+
+    %% Nodes
+    SRC[(public.flight_states)]:::source
+    STG_FS[stg_flight_states]:::staging
+    INT_FA[int_flights_aggregated]:::intermediate
+    DIM_AC[dim_aircraft]:::mart
+    FACT_FL[fact_flights]:::mart
+    DIM_AP[[dim_airport (Seed)]]:::seed
+
+    %% Edges
+    SRC -->|Extract & Clean| STG_FS
+    STG_FS -->|Aggregate by flight session| INT_FA
+    STG_FS -->|Select distinct aircraft| DIM_AC
+    INT_FA -->|Incremental Load| FACT_FL
+    DIM_AC -.-|Foreign Key| FACT_FL
+```
+
 ## 🚀 How to Run
 
 1. **Activate Environment**
