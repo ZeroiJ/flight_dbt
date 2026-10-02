@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: dim_aircraft
+    description: "Aircraft dimension table"
+    columns:
+      - name: aircraft_id
+        description: "Primary key for aircraft"
+        tests:
+          - unique
+          - not_null
+      - name: icao24
+        description: "ICAO24 transponder code"
+        tests:
+          - not_null
+
+  - name: fact_flights
+    description: "Fact table for aggregated flight states"
+    columns:
+      - name: flight_id
+        description: "Primary key for a flight"
+        tests:
+          - unique
+          - not_null
+      - name: aircraft_id
+        description: "Foreign key to dim_aircraft"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_aircraft')
+              field: aircraft_id
+
+seeds:
+  - name: dim_airport
+    description: "Airport dimension seed table"
+    columns:
+      - name: airport_id
+        tests:
+          - unique
+          - not_null

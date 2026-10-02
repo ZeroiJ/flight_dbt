@@ -1,0 +1,11 @@
+airport_id,name,city,country,iata,icao,latitude,longitude
+1,Hartsfield-Jackson Atlanta International Airport,Atlanta,United States,ATL,KATL,33.636719,-84.428067
+2,Beijing Capital International Airport,Beijing,China,PEK,ZBAA,40.080111,116.584556
+3,Dubai International Airport,Dubai,United States,DXB,OMDB,25.252778,55.364444
+4,Los Angeles International Airport,Los Angeles,United States,LAX,KLAX,33.942536,-118.408074
+5,Tokyo Haneda Airport,Tokyo,Japan,HND,RJTT,35.552258,139.779694
+6,O'Hare International Airport,Chicago,United States,ORD,KORD,41.978603,-87.904842
+7,London Heathrow Airport,London,United Kingdom,LHR,EGLL,51.4706,-0.461941
+8,Shanghai Pudong International Airport,Shanghai,China,PVG,ZSPD,31.143378,121.805214
+9,Charles de Gaulle Airport,Paris,France,CDG,LFPG,49.009592,2.559382
+10,Dallas/Fort Worth International Airport,Dallas-Fort Worth,United States,DFW,KDFW,32.896828,-97.037997

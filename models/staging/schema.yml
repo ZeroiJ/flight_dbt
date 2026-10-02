@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: public
+    database: flights
+    schema: public
+    tables:
+      - name: flight_states
+
+models:
+  - name: stg_flight_states
+    description: "Staging table for raw flight states data"
+    columns:
+      - name: id
+        tests:
+          - unique
+          - not_null
+      - name: icao24
+        tests:
+          - not_null
